@@ -53,6 +53,35 @@ resource eventHubCave 'Microsoft.EventHub/namespaces/eventhubs@2023-01-01-previe
   }
 }
 
+resource eventHubDaemon 'Microsoft.EventHub/namespaces/eventhubs@2023-01-01-preview' = {
+  parent: eventHubNamespace
+  name: 'daemon'
+  properties: {
+    retentionDescription: {
+      cleanupPolicy: 'Delete'
+      retentionTimeInHours: 24
+    }
+    messageRetentionInDays: 1
+    partitionCount: 1
+  }
+  
+  resource consumerGroupCave 'consumergroups' = {
+    name: 'cave'
+  }
+
+  resource consumerGroupPlayer 'consumergroups' = {
+    name: 'player'
+  }
+
+  resource consumerGroupMessages 'consumergroups' = {
+    name: 'messages'
+  }
+
+  resource consumerGroupDaemon 'consumergroups' = {
+    name: 'daemon'
+  }
+}
+
 resource eventHubPlayer 'Microsoft.EventHub/namespaces/eventhubs@2023-01-01-preview' = {
   parent: eventHubNamespace
   name: 'player'

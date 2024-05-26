@@ -13,7 +13,7 @@
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
@@ -25,7 +25,70 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler guiclass="jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.gui.AzEventHubsSamplerGui" testclass="jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler" testname="Azure Event Hubs Sampler" enabled="true">
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+          <stringProp name="ConstantTimer.delay">5000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <stringProp name="LoopController.loops">10</stringProp>
+        </LoopController>
+        <hashTree>
+          <jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler guiclass="jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.gui.AzEventHubsSamplerGui" testclass="jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler" testname="PlayerWantToDigRoomEvent" enabled="true">
+            <stringProp name="namespaceName">evh-choreography.servicebus.windows.net</stringProp>
+            <stringProp name="authType">Shared access signature</stringProp>
+            <stringProp name="sharedAccessKeyName">Endpoint=sb://evh-choreography.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey</stringProp>
+            <stringProp name="sharedAccessKey">9ahdw+Gyf8/7sanH3Ogs2MoafzNSdDYw9+AEhMbdPqI=</stringProp>
+            <stringProp name="eventHubName">player</stringProp>
+            <stringProp name="partitionType">Not specified</stringProp>
+            <stringProp name="partitionValue">0</stringProp>
+            <elementProp name="messages" elementType="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessages" guiclass="jp.co.pnop.jmeter.protocol.amqp.sampler.gui.AzAmqpMessagesPanel" testclass="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessages" testname="[res_key=Azure Event Hubs Default]" enabled="true">
+              <collectionProp name="Messages.messages">
+                <elementProp name="{     &quot;transactionId&quot;: &quot;123456789&quot;,     &quot;id&quot;: null,     &quot;eventType&quot;: &quot;PlayerWantToDigRoomEvent&quot;,     &quot;positionInCave&quot;: &quot;(10,1,0)&quot;,     &quot;content&quot;: &quot;test message&quot;,     &quot;description&quot;: &quot;New room&quot;,     &quot;creatorId&quot;: &quot;anders-id1&quot;,     &quot;creatorName&quot;: &quot;Anders&quot;,     &quot;creatorTimeStampISO8601&quot;: &quot;2024-04-29T15:08:08+02:00&quot; }" elementType="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessage">
+                  <stringProp name="Message.messageType">String</stringProp>
+                  <stringProp name="Message.message">{     &quot;transactionId&quot;: &quot;123456789&quot;,     &quot;id&quot;: null,     &quot;eventType&quot;: &quot;PlayerWantToDigRoomEvent&quot;,     &quot;positionInCave&quot;: &quot;(10,1,0)&quot;,     &quot;content&quot;: &quot;test message&quot;,     &quot;description&quot;: &quot;New room&quot;,     &quot;creatorId&quot;: &quot;anders-id1&quot;,     &quot;creatorName&quot;: &quot;Anders&quot;,     &quot;creatorTimeStampISO8601&quot;: &quot;2024-04-29T15:08:08+02:00&quot; }</stringProp>
+                  <stringProp name="Message.partitionKey"></stringProp>
+                  <stringProp name="Message.messageId"></stringProp>
+                  <stringProp name="Message.groupId"></stringProp>
+                  <stringProp name="Message.customProperties"></stringProp>
+                  <stringProp name="Message.contentType"></stringProp>
+                  <stringProp name="Message.label"></stringProp>
+                  <stringProp name="Message.standardProperties"></stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler>
+          <hashTree/>
+          <jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler guiclass="jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.gui.AzEventHubsSamplerGui" testclass="jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler" testname="Azure Event Hubs Sampler" enabled="false">
+            <stringProp name="namespaceName">evh-choreography.servicebus.windows.net</stringProp>
+            <stringProp name="authType">Shared access signature</stringProp>
+            <stringProp name="sharedAccessKeyName">Endpoint=sb://evh-choreography.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey</stringProp>
+            <stringProp name="sharedAccessKey">jmK+2yP7EoXq2n+Y5S++sGlpBu6hSjX3i+AEhLmJArM=</stringProp>
+            <stringProp name="eventHubName">messages</stringProp>
+            <stringProp name="partitionType">Not specified</stringProp>
+            <stringProp name="partitionValue">0</stringProp>
+            <elementProp name="messages" elementType="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessages" guiclass="jp.co.pnop.jmeter.protocol.amqp.sampler.gui.AzAmqpMessagesPanel" testclass="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessages" testname="[res_key=Azure Event Hubs Default]" enabled="true">
+              <collectionProp name="Messages.messages">
+                <elementProp name="{   &quot;transactionId&quot;: &quot;123456789&quot;,   &quot;id&quot;: null,   &quot;eventType&quot;: 4,   &quot;positionInCave&quot;: &quot;(0,0,1)&quot;,   &quot;content&quot;: &quot;test message&quot;,   &quot;creatorId&quot;: &quot;anders-id1&quot;,   &quot;creatorName&quot;: &quot;Anders&quot;,   &quot;creatorTimeStampISO8601&quot;: &quot;2024-04-29T15:08:08+02:00&quot; }" elementType="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessage">
+                  <stringProp name="Message.messageType">String</stringProp>
+                  <stringProp name="Message.message">{   &quot;transactionId&quot;: &quot;123456789&quot;,   &quot;id&quot;: null,   &quot;eventType&quot;: 4,   &quot;positionInCave&quot;: &quot;(0,0,1)&quot;,   &quot;content&quot;: &quot;test message&quot;,   &quot;creatorId&quot;: &quot;anders-id1&quot;,   &quot;creatorName&quot;: &quot;Anders&quot;,   &quot;creatorTimeStampISO8601&quot;: &quot;2024-04-29T15:08:08+02:00&quot; }</stringProp>
+                  <stringProp name="Message.partitionKey"></stringProp>
+                  <stringProp name="Message.messageId"></stringProp>
+                  <stringProp name="Message.groupId"></stringProp>
+                  <stringProp name="Message.customProperties"></stringProp>
+                  <stringProp name="Message.contentType"></stringProp>
+                  <stringProp name="Message.label"></stringProp>
+                  <stringProp name="Message.standardProperties"></stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+            <stringProp name="ConstantTimer.delay">300</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler guiclass="jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.gui.AzEventHubsSamplerGui" testclass="jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler" testname="final-event" enabled="false">
           <stringProp name="namespaceName">evh-choreography.servicebus.windows.net</stringProp>
           <stringProp name="authType">Shared access signature</stringProp>
           <stringProp name="sharedAccessKeyName">Endpoint=sb://evh-choreography.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey</stringProp>
@@ -35,9 +98,9 @@
           <stringProp name="partitionValue">0</stringProp>
           <elementProp name="messages" elementType="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessages" guiclass="jp.co.pnop.jmeter.protocol.amqp.sampler.gui.AzAmqpMessagesPanel" testclass="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessages" testname="[res_key=Azure Event Hubs Default]" enabled="true">
             <collectionProp name="Messages.messages">
-              <elementProp name="{&quot;test&quot;:&quot;cave-event-test1&quot;}" elementType="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessage">
+              <elementProp name="{&quot;test&quot;:&quot;final-event&quot;}" elementType="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessage">
                 <stringProp name="Message.messageType">String</stringProp>
-                <stringProp name="Message.message">{&quot;test&quot;:&quot;cave-event-test1&quot;}</stringProp>
+                <stringProp name="Message.message">{&quot;test&quot;:&quot;final-event&quot;}</stringProp>
                 <stringProp name="Message.partitionKey"></stringProp>
                 <stringProp name="Message.messageId"></stringProp>
                 <stringProp name="Message.groupId"></stringProp>
@@ -49,43 +112,6 @@
             </collectionProp>
           </elementProp>
         </jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler>
-        <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>false</encoding>
-              <assertions>true</assertions>
-              <subresults>true</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <sentBytes>true</sentBytes>
-              <url>true</url>
-              <threadCounts>true</threadCounts>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename"></stringProp>
-        </ResultCollector>
         <hashTree/>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
@@ -106,12 +132,118 @@
         <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
           <stringProp name="cacheKey">true</stringProp>
           <stringProp name="filename"></stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="script"></stringProp>
-          <stringProp name="scriptLanguage">java</stringProp>
+          <stringProp name="parameters">PlayerHasWrittenMessageInNewRoomEvent</stringProp>
+          <stringProp name="script">import org.apache.kafka.clients.consumer.*;
+import org.apache.kafka.common.serialization.LongDeserializer;
+import org.apache.kafka.common.serialization.StringDeserializer;
+
+import java.util.Collections;
+import java.util.Properties;
+import java.time.Duration
+
+Properties properties = new Properties();
+properties.put(ConsumerConfig.CLIENT_ID_CONFIG, &quot;KafkaConsumer&quot;);
+properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, LongDeserializer.class.getName());
+properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+properties.put(ConsumerConfig.GROUP_ID_CONFIG, &quot;daemon&quot;);
+properties.put(&quot;bootstrap.servers&quot;, &quot;evh-choreography.servicebus.windows.net:9093&quot;);
+properties.put(&quot;security.protocol&quot;, &quot;SASL_SSL&quot;);
+properties.put(&quot;sasl.mechanism&quot;, &quot;PLAIN&quot;);
+properties.put(&quot;sasl.jaas.config&quot;, &quot;org.apache.kafka.common.security.plain.PlainLoginModule required username=\&quot;\$ConnectionString\&quot; password=\&quot;Endpoint=sb://evh-choreography.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=9ahdw+Gyf8/7sanH3Ogs2MoafzNSdDYw9+AEhMbdPqI=\&quot;;&quot;);
+
+Consumer&lt;Long, String&gt; consumer = new KafkaConsumer&lt;&gt;(properties);
+
+consumer.subscribe(Arrays.asList(&quot;player&quot;, &quot;cave&quot;, &quot;messages&quot;));
+
+long t = System.currentTimeMillis();
+
+
+//set Sample Label
+SampleResult.setSampleLabel(&quot;Recorded Events&quot;);
+//set Start Time
+def start = System.currentTimeMillis(); //return current time in milliseconds
+SampleResult.setStartTime(start); // set StartTime
+log.info(&quot;Start Time should be: &quot; + (new Date(start)).toString()); //print the start time in Date format
+//set Response Code
+SampleResult.setResponseCode(&quot;201&quot;);
+//set Response Message
+SampleResult.setResponseMessage(&quot;[&quot;);
+//set Response Data
+SampleResult.setResponseData(&quot;Test&quot;, &quot;UTF-8&quot;);
+
+boolean loop = true;
+
+String endEventText = args[0];
+
+OUT.println(&quot;---------------------------------------------------------------------------------&quot;)
+long end = System.currentTimeMillis() + 25000;
+while(System.currentTimeMillis() &lt; end) {
+	//OUT.println(&quot;Starting new loop and polling&quot;);	
+	ConsumerRecords&lt;String, String&gt; records = consumer.poll(Duration.ofMillis(100));
+	//OUT.println(&quot;Polling complete: &quot; + records.size());
+  	for (ConsumerRecord&lt;String, String&gt; record : records){
+     	OUT.println(&quot;Key: &quot; + record.key() + &quot;, Value: &quot; + record.value());
+     	OUT.println(&quot;Partition: &quot; + record.partition() + &quot;, Offset:&quot; + record.offset());
+  	}
+}
+
+/*while(loop) {
+	ConsumerRecords&lt;Long, String&gt; records = consumer.poll(200);
+	for (ConsumerRecord&lt;Long, String&gt; record : records) {
+		String value = record.value();
+		String data = SampleResult.getResponseMessage() + &quot;,&quot; + value;
+		SampleResult.setResponseMessage(data);
+		OUT.println(&quot;----&gt;&quot; + value.contains(endEventText));
+		if(value.contains(endEventText)) {
+			loop = false;
+		}
+     }
+	consumer.commitSync();
+}*/
+OUT.println(&quot;---------------------------------------------------------------------------------&quot;)
+SampleResult.setResponseMessage(SampleResult.getResponseMessage() + &quot;]&quot;);
+consumer.close();</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
         </JSR223Sampler>
         <hashTree/>
       </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
     </hashTree>
   </hashTree>
 </jmeterTestPlan>
