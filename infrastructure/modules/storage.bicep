@@ -98,3 +98,5 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-04-01' = {
     }
   }
 }
+
+output connectionString string = 'DefaultEndpointsProtocol=https;AccountName=st${name}skycave;AccountKey=${storageAccount.listKeys().keys[0].value};EndpointSuffix=core.windows.net'

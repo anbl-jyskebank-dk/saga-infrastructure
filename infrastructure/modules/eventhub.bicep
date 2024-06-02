@@ -139,3 +139,5 @@ resource eventHubMessages 'Microsoft.EventHub/namespaces/eventhubs@2023-01-01-pr
     name: 'daemon'
   }
 }
+
+output connectionString string = '${auth.listKeys().primaryConnectionString}'

@@ -30,7 +30,7 @@
         </ConstantTimer>
         <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler guiclass="jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.gui.AzEventHubsSamplerGui" testclass="jp.co.pnop.jmeter.protocol.azureeventhubs.sampler.AzEventHubsSampler" testname="PlayerWantToDigRoomEvent" enabled="true">
@@ -43,9 +43,9 @@
             <stringProp name="partitionValue">0</stringProp>
             <elementProp name="messages" elementType="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessages" guiclass="jp.co.pnop.jmeter.protocol.amqp.sampler.gui.AzAmqpMessagesPanel" testclass="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessages" testname="[res_key=Azure Event Hubs Default]" enabled="true">
               <collectionProp name="Messages.messages">
-                <elementProp name="{     &quot;transactionId&quot;: &quot;123456789&quot;,     &quot;id&quot;: null,     &quot;eventType&quot;: &quot;PlayerWantToDigRoomEvent&quot;,     &quot;positionInCave&quot;: &quot;(10,1,0)&quot;,     &quot;content&quot;: &quot;test message&quot;,     &quot;description&quot;: &quot;New room&quot;,     &quot;creatorId&quot;: &quot;anders-id1&quot;,     &quot;creatorName&quot;: &quot;Anders&quot;,     &quot;creatorTimeStampISO8601&quot;: &quot;2024-04-29T15:08:08+02:00&quot; }" elementType="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessage">
+                <elementProp name="{     &quot;transactionId&quot;: &quot;123456789&quot;,     &quot;id&quot;: null,     &quot;eventType&quot;: &quot;PlayerWantToDigRoomEvent&quot;,     &quot;positionInCave&quot;: &quot;(1,0,0)&quot;,     &quot;content&quot;: &quot;test message&quot;,     &quot;description&quot;: &quot;New room&quot;,     &quot;creatorId&quot;: &quot;anders-id1&quot;,     &quot;creatorName&quot;: &quot;Anders&quot;,     &quot;creatorTimeStampISO8601&quot;: &quot;2024-04-29T15:08:08+02:00&quot; }" elementType="jp.co.pnop.jmeter.protocol.amqp.sampler.AzAmqpMessage">
                   <stringProp name="Message.messageType">String</stringProp>
-                  <stringProp name="Message.message">{     &quot;transactionId&quot;: &quot;123456789&quot;,     &quot;id&quot;: null,     &quot;eventType&quot;: &quot;PlayerWantToDigRoomEvent&quot;,     &quot;positionInCave&quot;: &quot;(10,1,0)&quot;,     &quot;content&quot;: &quot;test message&quot;,     &quot;description&quot;: &quot;New room&quot;,     &quot;creatorId&quot;: &quot;anders-id1&quot;,     &quot;creatorName&quot;: &quot;Anders&quot;,     &quot;creatorTimeStampISO8601&quot;: &quot;2024-04-29T15:08:08+02:00&quot; }</stringProp>
+                  <stringProp name="Message.message">{     &quot;transactionId&quot;: &quot;123456789&quot;,     &quot;id&quot;: null,     &quot;eventType&quot;: &quot;PlayerWantToDigRoomEvent&quot;,     &quot;positionInCave&quot;: &quot;(1,0,0)&quot;,     &quot;content&quot;: &quot;test message&quot;,     &quot;description&quot;: &quot;New room&quot;,     &quot;creatorId&quot;: &quot;anders-id1&quot;,     &quot;creatorName&quot;: &quot;Anders&quot;,     &quot;creatorTimeStampISO8601&quot;: &quot;2024-04-29T15:08:08+02:00&quot; }</stringProp>
                   <stringProp name="Message.partitionKey"></stringProp>
                   <stringProp name="Message.messageId"></stringProp>
                   <stringProp name="Message.groupId"></stringProp>
